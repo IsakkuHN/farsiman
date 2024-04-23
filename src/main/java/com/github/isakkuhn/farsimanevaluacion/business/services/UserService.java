@@ -3,6 +3,7 @@ package com.github.isakkuhn.farsimanevaluacion.business.services;
 import com.github.isakkuhn.farsimanevaluacion.persistence.entities.UserEntity;
 import com.github.isakkuhn.farsimanevaluacion.persistence.repositories.UserRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,6 +15,8 @@ public class UserService {
 
     private final UserRepository userRepository;
 
+    private final PasswordEncoder passwordEncoder;
+
     public List<UserEntity> getAllUsers() {
         return userRepository.findAll();
     }
@@ -24,6 +27,8 @@ public class UserService {
 
     public UserEntity createUser(UserEntity user) {
         if(user.getId()== null) {
+            String hashedPassword = passwordEncoder.encode(user.getPassword());
+            user.setPassword(hashedPassword);
             return this.userRepository.save(user);
         }
         return null;

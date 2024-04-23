@@ -3,17 +3,17 @@ package com.github.isakkuhn.farsimanevaluacion.business.utils;
 import com.github.isakkuhn.farsimanevaluacion.persistence.entities.UserEntity;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.stereotype.Component;
 
 import javax.crypto.SecretKey;
+import java.nio.charset.StandardCharsets;
 import java.util.Date;
 
 @Component
 public class JwtTokenUtil {
 
-    private static final String SECRET = "arsiman-evaluacion";
+    private static final String SECRET = "farsiman-evaluacion-12345678901234567890";
     private static final long EXPIRATION_TIME = 86400000;
 
     public String generateToken(UserEntity user){
@@ -51,7 +51,7 @@ public class JwtTokenUtil {
             Jwts.parser()
                     .verifyWith(getSecretKey(SECRET))
                     .build()
-                    .parseEncryptedClaims(token)
+                    .parseSignedClaims(token)
                     .getPayload()
                     .getSubject();
             return true;
@@ -62,7 +62,14 @@ public class JwtTokenUtil {
     }
 
     private SecretKey getSecretKey(String secret){
-        byte[] secretBytes = Decoders.BASE64.decode(secret);
+        byte[] secretBytes = secret.getBytes(StandardCharsets.UTF_8);
         return Keys.hmacShaKeyFor(secretBytes);
     }
+
+    public boolean isTokenExpired(String token) {
+        Claims claims = this.getClaims(token);
+        return claims.getExpiration().before(new Date());
+    }
+
+
 }
