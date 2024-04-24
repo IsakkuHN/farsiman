@@ -1,0 +1,866 @@
+{
+	"info": {
+		"_postman_id": "753752e3-a91f-4b65-887f-40b585cf3b2a",
+		"name": "Farsiman",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11141626",
+		"_collection_link": "https://maelcon.postman.co/workspace/Maelcon~6b273cc7-b8c2-490d-a11b-104d423fc193/collection/11141626-753752e3-a91f-4b65-887f-40b585cf3b2a?action=share&source=collection_link&creator=11141626"
+	},
+	"item": [
+		{
+			"name": "Collaborator Requests",
+			"item": [
+				{
+					"name": "Get All Collaborators",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Get Collaborator by Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/collaborator/4dd24e7e-8e63-4ec8-ac24-291009a4c413",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"collaborator",
+								"4dd24e7e-8e63-4ec8-ac24-291009a4c413"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteCollaborator by Id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/collaborator/4dd24e7e-8e63-4ec8-ac24-291009a4c413",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"collaborator",
+								"4dd24e7e-8e63-4ec8-ac24-291009a4c413"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save Collaborator",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\":\"Raul\",\r\n    \"lastName\": \"Ortega\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/collaborator",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"collaborator"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Collaborator",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"4dd24e7e-8e63-4ec8-ac24-291009a4c413\",\r\n    \"firstName\":\"Oscar\",\r\n    \"lastName\": \"Ortega\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/collaborator",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"collaborator"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User Requests",
+			"item": [
+				{
+					"name": "Get All Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/user",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User by Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/collaborator/4dd24e7e-8e63-4ec8-ac24-291009a4c413",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"collaborator",
+								"4dd24e7e-8e63-4ec8-ac24-291009a4c413"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User by Id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/user/c2408444-d73b-477d-9782-b316568167f4",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"user",
+								"c2408444-d73b-477d-9782-b316568167f4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\":\"Raul\",\r\n    \"lastName\": \"Ortega\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/collaborator",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"collaborator"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"7f390d78-922c-4d0f-a98e-2720eaaf9edb\",\r\n    \"username\": \"Raul1234\",\r\n    \"password\": \"Ortega1234\",\r\n    \"role\": \"Admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/user",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Branch Requests",
+			"item": [
+				{
+					"name": "Get All Branches",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/branch",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"branch"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Branch by Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/branch/1",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"branch",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Branch by Id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/branch/3",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"branch",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save Branch",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Los Proceres 2\",\r\n    \"address\": \"Los proceres\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/branch",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"branch"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Branch",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":1,\r\n    \"name\":\"Los Proceres\",\r\n    \"address\": \"Mall Novacentro\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/branch",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"branch"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Driver Requests",
+			"item": [
+				{
+					"name": "Get All Drivers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/driver",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"driver"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Driver  by Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/driver/1",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"driver",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Driver  by Id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/driver/3",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"driver",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save Driver",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\":\"Jose \",\r\n    \"lastName\": \"Martinez\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/driver",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"driver"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Driver",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":1,\r\n    \"name\":\"Los Proceres\",\r\n    \"address\": \"Mall Novacentro\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/driver",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"driver"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Assignation Requests",
+			"item": [
+				{
+					"name": "Get All Assignations",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Assignations By Branch Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/assignation/branch/4",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"assignation",
+								"branch",
+								"4"
+							],
+							"query": [
+								{
+									"key": "branchId",
+									"value": "1",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Assignations By Collaborator Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/assignation/branch/4",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"assignation",
+								"branch",
+								"4"
+							],
+							"query": [
+								{
+									"key": "branchId",
+									"value": "1",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Assignations Distance By Collaborators Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n[\"25f5abd5-6c34-495a-b94c-6c4d66c3bdea\", \"f3956db3-e9c6-4aa5-ad96-0b52c5b65764\"  ]\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/assignation/total_distance/4",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"assignation",
+								"total_distance",
+								"4"
+							],
+							"query": [
+								{
+									"key": "branchId",
+									"value": "1",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save Collab Assignation",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"key\": {\r\n        \"branchId\":1,\r\n        \"collaboratorId\":\"\"\r\n    },\r\n\r\n    \"distance\":10.0 \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/assignation",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"assignation"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Travel Requests",
+			"item": [
+				{
+					"name": "Get All Travels",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/travel",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"travel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Travels By Driver Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/travel",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"travel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Travelers By Travel Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/travel/travelers/1",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"travel",
+								"travelers",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pay Travel By Id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/travel/1",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"travel",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Travel",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"travelDate\": \"2024-04-30\",\r\n    \"travelDistance\": 0,\r\n    \"travelRatePerKm\":0.24,\r\n    \"isPaid\":false,\r\n    \"user\": {\"id\":\"7f390d78-922c-4d0f-a98e-2720eaaf9edb\"},\r\n    \"driver\": {\"id\":\"d8e4eed3-56b7-4a1c-bb39-67aa01a00078\"},\r\n    \"branch\": {\"id\":1}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/travel",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"travel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Traveler to Travel",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"key\":{\r\n        \"travelId\":1,\r\n        \"collaboratorId\":\"f3956db3-e9c6-4aa5-ad96-0b52c5b65764\"\r\n    }\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/travel/traveler",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"travel",
+								"traveler"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Login Request",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"admin2\",\r\n    \"password\": \"admin2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/auth/login",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Initial Request",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{local}}/initial",
+					"host": [
+						"{{local}}"
+					],
+					"path": [
+						"initial"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "local",
+			"value": "localhost:7890",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjIiLCJyb2xlIjoiQWRtaW4iLCJpYXQiOjE3MTM5MDg1NDYsImV4cCI6MTcxMzk5NDk0Nn0.hTAsxiFaeq88SnXznVf8iFf9mJJ8gYXNCMMTbfL9OoA",
+			"type": "string"
+		}
+	]
+}
