@@ -25,6 +25,8 @@ public class WebSecurityConfig  {
 
     private final JwtRequestFilter jwtRequestFilter;
 
+    private final MyCorsFilter myCorsFilter;
+
     private final UserDetailsService userDetailsService;
 
     @Bean
