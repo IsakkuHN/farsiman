@@ -9,6 +9,6 @@ import java.util.UUID;
 
 public interface TravelRepository extends JpaRepository<TravelEntity, Long> {
 
-    List<TravelEntity> findAllByTravelDateBetweenAndDriverId(Date from, Date to, UUID driverId);
+    List<TravelEntity> findAllByTravelDateBetweenAndDriverIdAndIsPaidFalse(Date from, Date to, UUID driverId);
 
 }

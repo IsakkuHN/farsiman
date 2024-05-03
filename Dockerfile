@@ -1,6 +1,4 @@
-FROM maven:3.6.9 as builder
-
-ENV MAVEN_OPTS="-XX:+TieredCompilation -XX:TieredStopAtLevel=1"
+FROM maven:3.8.3 as builder
 
 WORKDIR /opt/demo
 
@@ -10,14 +8,16 @@ RUN mvn dependency:go-offline
 
 COPY ./src ./src
 
-RUN mvn clean install -Dmaven.test.skip=true
+RUN mvn clean install -D maven.test.skip=true
 
-FROM openjdk:17-alpine
+FROM amazoncorretto:17
+
+ENV MYSQL_DB_PASSWORD Kendo096.
 
 WORKDIR /opt/demo
 
-COPY --from=builder /opt/demo/target/demo.jar /opt/demo
+COPY --from=builder /opt/demo/target/farsiman-evaluacion-0.0.1.jar /opt/demo/app.jar
 
 EXPOSE 7890
 
-CMD ["java", "-jar", "app.jar"]
+CMD ["java", "-jar", "-D MY_SQL_PASSWORD=$MYSQL_DB_PASSWORD", "app.jar"]

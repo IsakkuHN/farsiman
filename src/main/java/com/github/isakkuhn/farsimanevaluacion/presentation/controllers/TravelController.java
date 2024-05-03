@@ -4,10 +4,13 @@ import com.github.isakkuhn.farsimanevaluacion.business.services.TravelService;
 import com.github.isakkuhn.farsimanevaluacion.persistence.entities.TravelDetailEntity;
 import com.github.isakkuhn.farsimanevaluacion.persistence.entities.TravelEntity;
 import com.github.isakkuhn.farsimanevaluacion.presentation.dto.TravelReportDto;
+import com.github.isakkuhn.farsimanevaluacion.presentation.dto.TravelRequestDto;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -55,5 +58,11 @@ public class TravelController {
     public ResponseEntity<List<TravelDetailEntity>> getAllTravelers(@PathVariable Long travelId) {
         List<TravelDetailEntity> travelers = this.travelService.getAllTravelersByTravelId(travelId);
         return ResponseEntity.ok(travelers);
+    }
+
+    @PostMapping("/save")
+    public ResponseEntity<TravelEntity> saveTravel(@RequestBody @Valid TravelRequestDto travelDto) {
+        Optional<TravelEntity> entity = this.travelService.saveTravel(travelDto);
+        return entity.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.badRequest().build());
     }
 }

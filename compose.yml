@@ -1,0 +1,46 @@
+services:
+  mysql:
+    image: mysql
+    container_name: mysql_java
+    restart: always
+    ports:
+      - 33306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: "password123"
+      MYSQL_DATABASE: "farsiman"
+      MYSQL_USER: "userdb"
+      MYSQL_PASSWORD: "userpwd"
+    volumes:
+      - data_mysql:/var/lib/mysql
+    networks:
+      spring_network:
+        aliases:
+            - spring_host
+  backend:
+    container_name: spring_backend
+    image: amazoncorretto:17
+    depends_on:
+      - mysql
+    build:
+      context: .
+      dockerfile: Dockerfile
+    working_dir: /opt/demo
+    ports:
+      - 7890:7890
+    environment:
+      MYSQL_DB_PASSWORD: password123
+      MYSQL_USER: 'root'
+      MYSQL_DATABASE: 'farsiman'
+      SECRET_KEY: 'MAXIMUM_SECRET_ALLOWED_BY_USER'
+      MYSQL_HOST: 'mysql_java'
+      MYSQL_PORT: 3306
+    volumes:
+      - .:/opt/demo
+    command:
+      - java -jar app.jar
+volumes:
+  data_mysql:
+networks:
+  spring_network:
+    name: spring_network
+    driver: bridge

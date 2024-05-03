@@ -43,6 +43,7 @@ public class WebSecurityConfig  {
                 .authorizeHttpRequests(requests -> requests
                         .requestMatchers(HttpMethod.POST,"/auth/login/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/user").hasAuthority("Admin")
+                        .requestMatchers(HttpMethod.POST, "/travel/save").hasAuthority("Admin")
                         .anyRequest().authenticated())
                 .authenticationManager(authenticationManager)
                 .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);

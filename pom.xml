@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.github.isakkuhn</groupId>
     <artifactId>farsiman-evaluacion</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
     <name>farsiman-evaluacion</name>
     <description>farsiman-evaluacion</description>
     <properties>

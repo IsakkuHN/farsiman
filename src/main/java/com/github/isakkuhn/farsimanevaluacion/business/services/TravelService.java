@@ -1,12 +1,14 @@
 package com.github.isakkuhn.farsimanevaluacion.business.services;
 
 
-import com.github.isakkuhn.farsimanevaluacion.persistence.entities.TravelDetailEntity;
-import com.github.isakkuhn.farsimanevaluacion.persistence.entities.TravelEntity;
-import com.github.isakkuhn.farsimanevaluacion.persistence.repositories.CollaboratorRepository;
-import com.github.isakkuhn.farsimanevaluacion.persistence.repositories.TravelDetailRepository;
-import com.github.isakkuhn.farsimanevaluacion.persistence.repositories.TravelRepository;
+import com.github.isakkuhn.farsimanevaluacion.persistence.entities.*;
+import com.github.isakkuhn.farsimanevaluacion.persistence.entities.keys.TravelCollaboratorKey;
+import com.github.isakkuhn.farsimanevaluacion.persistence.repositories.*;
+import com.github.isakkuhn.farsimanevaluacion.presentation.dto.TravelRequestDto;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.sql.Date;
@@ -25,6 +27,12 @@ public class TravelService {
     private final CollaboratorRepository collaboratorRepository;
 
     private final AssignationService assignationService;
+
+    private final UserRepository userRepository;
+
+    private final BranchRepository branchRepository;
+
+    private final DriverRepository driverRepository;
 
     public List<TravelEntity> getAllTravels() {
         return this.travelRepository.findAll();
@@ -52,7 +60,7 @@ public class TravelService {
     }
 
     public List<TravelEntity> getAllTravelsByDriverIdBetween(UUID driverId, Date startDate, Date endDate) {
-        return this.travelRepository.findAllByTravelDateBetweenAndDriverId(startDate, endDate, driverId);
+        return this.travelRepository.findAllByTravelDateBetweenAndDriverIdAndIsPaidFalse(startDate, endDate, driverId);
     }
 
     public TravelDetailEntity addCollaboratorToTravel(TravelDetailEntity detail) {
@@ -85,6 +93,46 @@ public class TravelService {
         return this.travelDetailRepository.findAllByTravel_Id(travelId);
     }
 
+    @Transactional
+    public Optional<TravelEntity> saveTravel(TravelRequestDto dto) {
+        try {
 
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            String username = authentication.getName();
+            UserEntity user = userRepository.findByUsername(username).orElseThrow();
+            BranchEntity branch = branchRepository.findById(dto.branchId()).orElseThrow();
+            DriverEntity driver = driverRepository.findById(UUID.fromString(dto.driverId())).orElseThrow();
+
+
+            TravelEntity travel = new TravelEntity();
+            travel.setTravelDate(Date.valueOf(dto.travelDate()));
+            travel.setTravelDistance(dto.travelDistance());
+            travel.setTravelRatePerKm(dto.travelRate());
+            travel.setPaid(false);
+            travel.setBranch(branch);
+            travel.setDriver(driver);
+            travel.setUser(user);
+
+            TravelEntity savedTravel = travelRepository.save(travel);
+
+            List<String> travelers = dto.travelers();
+
+            for(String travelerId: travelers){
+                TravelDetailEntity travelDetailEntity = new TravelDetailEntity();
+                TravelCollaboratorKey key = new TravelCollaboratorKey(UUID.fromString(travelerId), savedTravel.getId());
+                travelDetailEntity.setKey(key);
+                Optional<TravelDetailEntity> savedDetail = travelDetailRepository.findByTravel_TravelDateAndCollaborator_Id(travel.getTravelDate(), UUID.fromString(travelerId));
+
+                if(savedDetail.isPresent()){
+                    throw new RuntimeException("Traveler already travel by the date selected");
+                }
+                travelDetailRepository.save(travelDetailEntity);
+            }
+            return Optional.of(savedTravel);
+        }catch (Exception e){
+            throw new RuntimeException("Error al registrar el viaje",e);
+        }
+
+    }
 
 }
